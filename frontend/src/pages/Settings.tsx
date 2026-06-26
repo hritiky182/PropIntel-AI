@@ -8,7 +8,7 @@ import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   User, ShieldAlert, Settings as SettingsIcon, Bell,
-  Lock, BadgePercent, Globe, Sparkles, CheckCircle2
+  BadgePercent, Globe, Sparkles, CheckCircle2
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -21,7 +21,6 @@ export default function Settings() {
     title: "Senior Acquisitions Director",
   });
 
-  const [mfa, setMfa] = useState(true);
   const [emailAlerts, setEmailAlerts] = useState(true);
   const [dealSourcingAlerts, setDealSourcingAlerts] = useState(true);
 
@@ -30,10 +29,6 @@ export default function Settings() {
     toast.success("Corporate profile settings updated successfully!");
   };
 
-  const handleMfaToggle = (checked: boolean) => {
-    setMfa(checked);
-    toast.success(checked ? "Multi-factor authentication (MFA) activated!" : "MFA deactivated.");
-  };
 
   return (
     <div className="space-y-6">
@@ -52,7 +47,6 @@ export default function Settings() {
       <Tabs defaultValue="profile" className="space-y-6">
         <TabsList className="bg-muted/65 p-1 rounded-xl w-full justify-start overflow-x-auto md:w-auto">
           <TabsTrigger value="profile" className="rounded-lg text-xs font-semibold px-4">Corporate Profile</TabsTrigger>
-          <TabsTrigger value="security" className="rounded-lg text-xs font-semibold px-4">Security & Credentials</TabsTrigger>
           <TabsTrigger value="notifications" className="rounded-lg text-xs font-semibold px-4">Preferences & Alerts</TabsTrigger>
         </TabsList>
 
@@ -99,27 +93,6 @@ export default function Settings() {
           </Card>
         </TabsContent>
 
-        {/* TAB 2: Security & Credentials */}
-        <TabsContent value="security" className="outline-none space-y-6">
-          <Card className="max-w-2xl border-border/40 shadow-sm rounded-2xl bg-card">
-            <CardHeader>
-              <CardTitle className="text-base font-bold font-outfit flex items-center gap-2">
-                <Lock className="h-5 w-5 text-primary" />
-                MFA Authentication Protocols
-              </CardTitle>
-              <CardDescription className="text-xs">Enforce multi-factor verification on your account.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-xs">
-              <div className="flex items-center justify-between p-4.5 rounded-2xl border border-border/40 bg-secondary/30">
-                <div className="space-y-0.5">
-                  <p className="font-bold text-foreground font-outfit">Two-Factor Authentication (2FA)</p>
-                  <p className="text-[10px] text-muted-foreground">Require a secure code from your authenticator app to log in.</p>
-                </div>
-                <Switch checked={mfa} onCheckedChange={handleMfaToggle} />
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
 
         {/* TAB 3: Preferences & Alerts */}
         <TabsContent value="notifications" className="outline-none">

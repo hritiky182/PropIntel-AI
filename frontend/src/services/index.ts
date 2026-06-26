@@ -38,7 +38,6 @@ export const authService = {
     await delay(); return { ok: true, email };
   },
   async resetPassword(_token: string, _password: string) { await delay(); return { ok: true }; },
-  async verifyMfa(code: string) { await delay(); return { ok: code.length === 6 }; },
   async verifyEmail(_token: string) { await delay(); return { ok: true }; },
 };
 

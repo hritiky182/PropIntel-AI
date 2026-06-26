@@ -5,7 +5,6 @@ import Login from "@/pages/Login";
 import ForgotPassword from "@/pages/ForgotPassword";
 import ResetPassword from "@/pages/ResetPassword";
 import VerifyEmail from "@/pages/VerifyEmail";
-import MFA from "@/pages/MFA";
 
 // Lazy / direct imports of pages
 import Dashboard from "@/pages/Dashboard";
@@ -49,7 +48,6 @@ export default function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
-        <Route path="/mfa" element={<MFA />} />
 
         {/* Protected layout shell */}
         <Route path="/" element={<AppLayout />}>

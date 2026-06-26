@@ -9,11 +9,11 @@ import type {
 } from "@/types";
 
 export const mockUsers: User[] = [
-  { id: "u1", name: "Alex Morgan", email: "alex@council.gov.uk", role: "super_admin", council: "Greater Manchester" },
-  { id: "u2", name: "Priya Shah", email: "priya@council.gov.uk", role: "council_officer", council: "Leeds CC" },
-  { id: "u3", name: "Tom Reid", email: "tom@hassoc.org", role: "housing_association", council: "Riverside HA" },
-  { id: "u4", name: "Nadia Khan", email: "nadia@legalpartners.uk", role: "legal_partner" },
-  { id: "u5", name: "Owen Pierce", email: "owen@refurb.co", role: "refurb_manager" },
+  { id: "u1", name: "Alex Morgan", email: "alex@test.com", role: "super_admin", council: "Greater Manchester" },
+  { id: "u2", name: "Priya Shah", email: "priya@test.com", role: "council_officer", council: "Leeds CC" },
+  { id: "u3", name: "Tom Reid", email: "tom@test.com", role: "housing_association", council: "Riverside HA" },
+  { id: "u4", name: "Nadia Khan", email: "nadia@test.com", role: "legal_partner" },
+  { id: "u5", name: "Owen Pierce", email: "owen@test.com", role: "refurb_manager" },
 ];
 
 const cities = ["Manchester", "Leeds", "Liverpool", "Birmingham", "Sheffield", "Bristol", "Newcastle"];
@@ -31,9 +31,8 @@ export const mockProperties: Property[] = Array.from({ length: 28 }).map((_, i) 
   bathrooms: (i % 3) + 1,
   price: 120000 + ((i * 17500) % 380000),
   status: statuses[i % statuses.length],
-  image: `https://images.unsplash.com/photo-${
-    ["1568605114967-8130f3a36994", "1570129477492-45c003edd2be", "1572120360610-d971b9d7767c", "1600585154340-be6161a56a0c", "1605276374104-dee2a0ed3cd6"][i % 5]
-  }?w=800&q=70&auto=format&fit=crop`,
+  image: `https://images.unsplash.com/photo-${["1568605114967-8130f3a36994", "1570129477492-45c003edd2be", "1572120360610-d971b9d7767c", "1600585154340-be6161a56a0c", "1605276374104-dee2a0ed3cd6"][i % 5]
+    }?w=800&q=70&auto=format&fit=crop`,
   council: ["Greater Manchester", "Leeds CC", "Liverpool CC", "Birmingham CC"][i % 4],
   addedAt: new Date(Date.now() - i * 86400000 * 2).toISOString(),
   yieldPct: 4 + ((i * 3) % 60) / 10,

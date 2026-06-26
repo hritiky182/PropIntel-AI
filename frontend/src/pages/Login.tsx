@@ -24,7 +24,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, formState: { errors }, setValue } = useForm<Form>({
     resolver: zodResolver(schema),
-    defaultValues: { email: "alex@council.gov.uk", password: "demo" },
+    defaultValues: { email: "alex@test.com", password: "demo" },
   });
 
   const onSubmit = async (data: Form) => {
@@ -33,7 +33,7 @@ export default function Login() {
       const { user, token } = await authService.login(data.email, data.password);
       setAuth(user, token);
       toast.success(`Welcome back, ${user.name.split(" ")[0]}`);
-      navigate("/mfa");
+      navigate("/dashboard");
     } catch (e) {
       toast.error((e as Error).message);
     } finally {
@@ -42,11 +42,11 @@ export default function Login() {
   };
 
   const demos = [
-    { label: "Super Admin", email: "alex@council.gov.uk", desc: "C-Suite Executive" },
-    { label: "Acquisitions Dir.", email: "priya@council.gov.uk", desc: "Asset Sourcing" },
-    { label: "Asset Manager", email: "tom@hassoc.org", desc: "Portfolio & Leases" },
-    { label: "Legal Counsel", email: "nadia@legalpartners.uk", desc: "Transactions & Audits" },
-    { label: "Project Manager", email: "owen@refurb.co", desc: "Refurbs & Construction" },
+    { label: "Super Admin", email: "alex@test.com", desc: "C-Suite Executive" },
+    { label: "Acquisitions Dir.", email: "priya@test.com", desc: "Asset Sourcing" },
+    { label: "Asset Manager", email: "tom@test.com", desc: "Portfolio & Leases" },
+    { label: "Legal Counsel", email: "nadia@test.com", desc: "Transactions & Audits" },
+    { label: "Project Manager", email: "owen@test.com", desc: "Refurbs & Construction" },
   ];
 
   return (
@@ -55,7 +55,7 @@ export default function Login() {
       <div className="relative hidden lg:flex lg:col-span-7 flex-col justify-between p-12 bg-slate-950 text-white overflow-hidden border-r border-slate-800">
         {/* Abstract animated background gradients */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.15),transparent_40%),radial-gradient(circle_at_70%_60%,rgba(14,165,233,0.12),transparent_50%)]" />
-        
+
         <div className="relative flex items-center gap-2.5">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-500 to-sky-400 shadow-lg shadow-indigo-500/30">
             <Building2 className="h-5.5 w-5.5 text-white" />
@@ -68,17 +68,17 @@ export default function Login() {
             <Sparkles className="h-3.5 w-3.5" />
             V3.0 AI-Powered Platform Release
           </div>
-          
+
           <h1 className="text-4xl xl:text-5xl font-bold tracking-tight leading-[1.1] font-outfit text-white">
             Next-Gen Real Estate <br />
             <span className="bg-gradient-to-r from-indigo-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent">
               Intelligence & Automation.
             </span>
           </h1>
-          
+
           <p className="mt-6 text-base text-slate-400 leading-relaxed font-light">
-            Smarter deal sourcing, predictive yield analysis, integrated CRM workflows, 
-            and construction oversight. Built for institutional investors, councils, 
+            Smarter deal sourcing, predictive yield analysis, integrated CRM workflows,
+            and construction oversight. Built for institutional investors, councils,
             and property managers worldwide.
           </p>
 
@@ -127,16 +127,16 @@ export default function Login() {
             <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-xs font-semibold">Email address</Label>
-                <Input 
-                  id="email" 
-                  type="email" 
+                <Input
+                  id="email"
+                  type="email"
                   className="rounded-xl border-border/50 bg-background/50"
-                  placeholder="name@company.com" 
-                  {...register("email")} 
+                  placeholder="name@company.com"
+                  {...register("email")}
                 />
                 {errors.email && <p className="text-xs text-destructive font-medium mt-1">{errors.email.message}</p>}
               </div>
-              
+
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password" className="text-xs font-semibold">Password</Label>
@@ -144,12 +144,12 @@ export default function Login() {
                     Forgot password?
                   </Link>
                 </div>
-                <Input 
-                  id="password" 
-                  type="password" 
+                <Input
+                  id="password"
+                  type="password"
                   className="rounded-xl border-border/50 bg-background/50"
-                  placeholder="••••••••" 
-                  {...register("password")} 
+                  placeholder="••••••••"
+                  {...register("password")}
                 />
                 {errors.password && <p className="text-xs text-destructive font-medium mt-1">{errors.password.message}</p>}
               </div>
